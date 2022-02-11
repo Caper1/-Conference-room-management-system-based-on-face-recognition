@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>meetstatustics.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<link rel="stylesheet" href="./layui/css/layui.css">
+  </head>
+  
+  <body>
+  	<script src="echarts/echarts.min.js"></script>
+	<script src="jquery-3.3.1/jquery-3.3.1.min.js"></script>
+	<div class="layui-row layui-col-space15">
+		<div class="layui-col-md12">
+			<div class="layui-panel">
+				<div style="padding: 30px;">
+				<h2>会议室统计<h2>
+				</div>
+					
+			</div>
+		</div>
+		<div class="layui-col-md4">
+			<div class="layui-panel">
+				<div style="padding: 30px;">今年的会议情况如下所示：
+				</div>
+				<pre>
+	2021年一共召开了<span id="zong" style="color:#F00;"></span>次会议<hr>
+	其中在会议室A召开有<span id="A" style="color:#F00;"></span>次<hr>
+	其中在会议室B召开有<span id="B" style="color:#F00;"></span>次<hr>
+	其中在会议室C召开有<span id="C" style="color:#F00;"></span>次<hr>
+	其中在会议室D召开有<span id="D" style="color:#F00;"></span>次<hr>
+	具体情况可查看右侧图表<hr>
+
+
+
+
+
+
+
+
+
+				</pre>
+				
+				
+
+			</div>
+		</div>
+		<div class="layui-col-md8">
+		
+			<div class="layui-panel">
+				<div id="main" style="width: 800px;height:600px;"></div>
+			</div>
+		</div>
+		
+		
+	</div>
+	<script>
+	var chartDom = document.getElementById('main');
+var myChart = echarts.init(chartDom);
+
+$.get("./MeetRoomCountServlet", function(data) {
+				console.log(data);
+				var events=[];
+				var sum=0;
+				var jsonObj =  JSON.parse(data);//转换为json对象
+				for(var i=0;i<jsonObj.length;i++){
+					events.push({
+          						value:jsonObj[i].meetsum,
+          						name:jsonObj[i].meetlocation
+          					});
+          			sum=sum+jsonObj[i].meetsum;
+				}
+				document.getElementById('zong').innerHTML=sum;
+				document.getElementById('A').innerHTML=jsonObj[0].meetsum;
+				document.getElementById('B').innerHTML=jsonObj[1].meetsum;
+				document.getElementById('C').innerHTML=jsonObj[2].meetsum;
+				document.getElementById('D').innerHTML=jsonObj[3].meetsum;
+				
+
+option = {
+    tooltip: {
+        trigger: 'item'
+    },
+    legend: {
+        top: '5%',
+        left: 'center'
+    },
+    series: [
+        {
+            name: '访问来源',
+            type: 'pie',
+            radius: ['40%', '70%'],
+            avoidLabelOverlap: false,
+            itemStyle: {
+                borderRadius: 10,
+                borderColor: '#fff',
+                borderWidth: 2
+            },
+            label: {
+                show: false,
+                position: 'center'
+            },
+            emphasis: {
+                label: {
+                    show: true,
+                    fontSize: '40',
+                    fontWeight: 'bold'
+                }
+            },
+            labelLine: {
+                show: false
+            },
+            data:events,
+        }
+    ]
+};
+
+myChart.setOption(option);
+});
+	
+	</script>
+	
+  </body>
+</html>

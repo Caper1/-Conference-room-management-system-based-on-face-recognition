@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>汇总统计</title>
+
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="this is my page">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+<link rel="stylesheet" href="./layui/css/layui.css">
+</head>
+
+<body>
+	<script src="echarts/echarts.min.js"></script>
+	<script src="jquery-3.3.1/jquery-3.3.1.min.js"></script>
+	<div class="layui-row layui-col-space15">
+		<div class="layui-col-md12">
+			<div class="layui-panel">
+				<div style="padding: 30px;">
+				<h2>会议统计与考勤统计<h2>
+				</div>
+					
+			</div>
+		</div>
+		<div class="layui-col-md4">
+			<div class="layui-panel">
+				<div style="padding: 30px;">您今年的会议情况如下所示：
+				</div>
+				<pre>
+	2021年您一共参与了<span id="zong" style="color:#F00;"></span>次会议<hr>
+	其中由您发起的会议为<span id="my" style="color:#F00;"></span>次<hr>
+	具体情况可查看右侧图表<hr>
+
+
+
+
+
+
+
+
+
+				</pre>
+				
+				
+
+			</div>
+		</div>
+		<div class="layui-col-md8">
+		
+			<div class="layui-panel">
+				<button class="layui-btn layui-btn-xs" name="2"
+					onclick="count(this)">按年统计</button>
+				<button class="layui-btn layui-btn-xs" name="1"
+					onclick="count(this)">按月统计</button>
+				<button class="layui-btn layui-btn-xs" name="0"
+					onclick="count(this)">按日统计</button>
+				<div id="main1" style="width: 800px;height:400px;"></div>
+
+
+			</div>
+		</div>
+		
+		<div class="layui-col-md4">
+			<div class="layui-panel">
+				<div style="padding: 30px;">您今年的考勤情况如下所示：
+				</div>
+				<pre>
+	缺勤<span id="queqin" style="color:#F00;"></span>次<hr>
+	正常签到<span id="normal" style="color:#F00;"></span>次<hr>
+	迟到<span id="chidao" style="color:#F00;"></span>次<hr>
+	请假<span id="qingjia" style="color:#F00;"></span>次<hr>
+	每月具体情况可查看右侧图表<hr>
+	考勤率为<span id="kaoqin" style="color:#F00;"></span>%<hr>
+
+
+
+
+
+
+
+
+
+				</pre>
+				
+				
+
+			</div>
+		</div>
+		<div class="layui-col-md8">
+		
+			<div class="layui-panel">
+				<button class="layui-btn layui-btn-xs" name="1"
+					onclick="countkaoqin(this)">按年统计</button>
+				<button class="layui-btn layui-btn-xs" name="0"
+					onclick="countkaoqin(this)">按月统计</button>
+				<div id="main2" style="width: 800px;height:400px;"></div>
+
+
+			</div>
+		</div>
+	</div>
+	
+<script type="text/javascript">
+
+
+			var myChart1 = echarts.init(document.getElementById('main1'));
+
+			$.get("./UserCountMeetServlet", {
+				method :2
+			}, function(data) {
+				console.log(data);
+				var dataX = [];
+				var dataY = [];
+				var dataY1=[];
+				var jsonObj =  JSON.parse(data);//转换为json对象
+				for(var i=0;i<jsonObj.length;i++){
+					dataX.push(jsonObj[i].CODE);
+					dataY.push(jsonObj[i].mycount);
+					dataY1.push(jsonObj[i].joincount);
+				    //取json中的值
+				}
+				document.getElementById('zong').innerHTML=dataY;
+				document.getElementById('my').innerHTML=dataY1;
+				
+				//alert(dataX);
+				// 指定图表的配置项和数据
+				option0 = {
+					title : {
+						text : '会议统计',
+					},
+					tooltip : {
+						trigger : 'axis'
+					},
+					legend : {
+						data : [ '我发起的会议', '我参加的会议' ]
+					},
+					toolbox : {
+						show : true,
+						feature : {
+							dataView : {
+								show : true,
+								readOnly : false
+							},
+							magicType : {
+								show : true,
+								type : [ 'line', 'bar' ]
+							},
+							restore : {
+								show : true
+							},
+							saveAsImage : {
+								show : true
+							}
+						}
+					},
+					calculable : true,
+					xAxis : [ {
+						type : 'category',
+						data : dataX,
+						axisLabel: {
+                interval:0 
+            }
+						
+					} ],
+					yAxis : [ {
+						type : 'value'
+					} ],
+					series : [
+							{
+								name : '我发起的会议',
+								type : 'bar',
+								data : dataY1,
+							}, {
+								name : '我参加的会议',
+								type : 'bar',
+								data : dataY,
+							} ]
+				};
+				// 使用刚指定的配置项和数据显示图表。
+				myChart1.setOption(option0);
+			});
+
+	</script>
+<script type="text/javascript">
+		function count(obj) {
+			//alert(obj.name);
+
+			var myChart1 = echarts.init(document.getElementById('main1'));
+
+			$.get("./UserCountMeetServlet", {
+				method : obj.name
+			}, function(data) {
+				console.log(data);
+				var dataX = [];
+				var dataY = [];
+				var dataY1=[];
+				var jsonObj =  JSON.parse(data);//转换为json对象
+				for(var i=0;i<jsonObj.length;i++){
+					dataX.push(jsonObj[i].CODE);
+					dataY.push(jsonObj[i].mycount);
+					dataY1.push(jsonObj[i].joincount);
+				    //取json中的值
+				}
+				
+				
+				//alert(dataX);
+				// 指定图表的配置项和数据
+				option0 = {
+					title : {
+						text : '会议统计',
+					},
+					tooltip : {
+						trigger : 'axis'
+					},
+					legend : {
+						data : [ '我发起的会议', '我参加的会议' ]
+					},
+					toolbox : {
+						show : true,
+						feature : {
+							dataView : {
+								show : true,
+								readOnly : false
+							},
+							magicType : {
+								show : true,
+								type : [ 'line', 'bar' ]
+							},
+							restore : {
+								show : true
+							},
+							saveAsImage : {
+								show : true
+							}
+						}
+					},
+					calculable : true,
+					xAxis : [ {
+						type : 'category',
+						data : dataX,
+						axisLabel: {
+                interval:0 
+            }
+						
+					} ],
+					yAxis : [ {
+						type : 'value'
+					} ],
+					series : [
+							{
+								name : '我发起的会议',
+								type : 'bar',
+								data : dataY,
+							}, {
+								name : '我参加的会议',
+								type : 'bar',
+								data : dataY1,
+							} ]
+				};
+				// 使用刚指定的配置项和数据显示图表。
+				myChart1.setOption(option0);
+			});
+		}
+	</script>
+	
+	
+	<script type="text/javascript">
+
+			//alert(obj.name);
+
+			var myChart = echarts.init(document.getElementById('main2'));
+
+			$.get("./UserCountKaoqinServlet", {
+				method : 1
+			}, function(data) {
+				console.log(data);
+				var dataX=[];
+				var queqin = [];
+				var normal= [];
+				var qingjia=[];
+				var chidao=[];
+				var jsonObj =  JSON.parse(data);//转换为json对象
+				for(var i=0;i<jsonObj.length;i++){
+					dataX.push(jsonObj[i].CODE);
+					queqin.push(jsonObj[i].queqin);
+					normal.push(jsonObj[i].normal);
+					qingjia.push(jsonObj[i].qingjia);
+					chidao.push(jsonObj[i].chidao);
+				    //取json中的值
+				}
+				var sum=queqin[0]+normal[0]+qingjia[0]+chidao[0];
+				var kaoqin=normal[0]/sum*100;
+				document.getElementById('queqin').innerHTML=queqin[0];
+				document.getElementById('normal').innerHTML=normal[0];
+				document.getElementById('qingjia').innerHTML=qingjia[0];
+				document.getElementById('chidao').innerHTML=chidao[0];
+				document.getElementById('kaoqin').innerHTML=kaoqin;
+				//alert(dataX);
+				// 指定图表的配置项和数据
+				option = {
+					title : {
+						text : '考勤统计',
+					},
+					tooltip : {
+						trigger : 'axis'
+					},
+					legend : {
+						data : [ '缺勤', '正常' , '请假', '迟到']
+					},
+					toolbox : {
+						show : true,
+						feature : {
+							dataView : {
+								show : true,
+								readOnly : false
+							},
+							magicType : {
+								show : true,
+								type : [ 'line', 'bar' ]
+							},
+							restore : {
+								show : true
+							},
+							saveAsImage : {
+								show : true
+							}
+						}
+					},
+					calculable : true,
+					xAxis : [ {
+						type : 'category',
+						data : dataX,
+						axisLabel: {
+                interval:0 
+            }
+						
+					} ],
+					yAxis : [ {
+						type : 'value'
+					} ],
+					series : [
+							{
+								name : '缺勤',
+								type : 'bar',
+								data : queqin,
+							}, {
+								name : '正常',
+								type : 'bar',
+								data : normal,
+							} , {
+								name : '请假',
+								type : 'bar',
+								data : qingjia,
+							}, {
+								name : '迟到',
+								type : 'bar',
+								data : chidao,
+							}]
+				};
+				// 使用刚指定的配置项和数据显示图表。
+				myChart.setOption(option);
+			});
+
+	</script>
+	<script type="text/javascript">
+		function countkaoqin(obj) {
+			//alert(obj.name);
+
+			var myChart = echarts.init(document.getElementById('main2'));
+
+			$.get("./UserCountKaoqinServlet", {
+				method : obj.name
+			}, function(data) {
+				console.log(data);
+				var dataX=[];
+				var queqin = [];
+				var normal= [];
+				var qingjia=[];
+				var chidao=[];
+				var jsonObj =  JSON.parse(data);//转换为json对象
+				for(var i=0;i<jsonObj.length;i++){
+					dataX.push(jsonObj[i].CODE);
+					queqin.push(jsonObj[i].queqin);
+					normal.push(jsonObj[i].normal);
+					qingjia.push(jsonObj[i].qingjia);
+					chidao.push(jsonObj[i].chidao);
+				    //取json中的值
+				}
+				
+				//alert(dataX);
+				// 指定图表的配置项和数据
+				option = {
+					title : {
+						text : '考勤统计',
+					},
+					tooltip : {
+						trigger : 'axis'
+					},
+					legend : {
+						data : [ '缺勤', '正常' , '请假', '迟到']
+					},
+					toolbox : {
+						show : true,
+						feature : {
+							dataView : {
+								show : true,
+								readOnly : false
+							},
+							magicType : {
+								show : true,
+								type : [ 'line', 'bar' ]
+							},
+							restore : {
+								show : true
+							},
+							saveAsImage : {
+								show : true
+							}
+						}
+					},
+					calculable : true,
+					xAxis : [ {
+						type : 'category',
+						data : dataX,
+						axisLabel: {
+                interval:0 
+            }
+						
+					} ],
+					yAxis : [ {
+						type : 'value'
+					} ],
+					series : [
+							{
+								name : '缺勤',
+								type : 'bar',
+								data : queqin,
+							}, {
+								name : '正常',
+								type : 'bar',
+								data : normal,
+							} , {
+								name : '请假',
+								type : 'bar',
+								data : qingjia,
+							}, {
+								name : '迟到',
+								type : 'bar',
+								data : chidao,
+							}]
+				};
+				// 使用刚指定的配置项和数据显示图表。
+				myChart.setOption(option);
+			});
+		}
+	</script>
+</body>
+</html>

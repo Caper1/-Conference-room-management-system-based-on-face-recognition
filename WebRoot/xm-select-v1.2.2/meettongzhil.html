@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+    <style type="text/css">
+		*{padding:0; margin:0;}
+		body{font-family:"宋体";}		
+		.news{width:98%; margin:0 auto; margin-bottom:5px;}
+		.new_title{width:100%; height:25px; line-height:25px; padding-top:10px;background:#fafafa; border-radius:3px; }
+		.new_title i{width:22px; height:20px; float:left; display:block; background:url(images/iconfont-link.gif)5px 0 no-repeat;}
+		.new_title a{height:20px; line-height:20px; font-size:18px; font-weight:bold; color:#36a; margin-left:5px; text-decoration:none; background:#fafafa; cursor:pointer;}
+		.new_title a:hover{text-decoration:underline;}
+		.new_content{padding:2px 10px; height:100%; border-radius:3px; line-height:20px; background:#fafafa; border-bottom:1px solid #eee;text-indent:2em;color:#808080;font-size:12px;}
+		.new_content a{color:#f81616; cursor:pointer;}
+		.new_content a:hover{text-decoration:underline;}
+		.date{float:right; width:80px; color:gray; font-size:12px;}	
+		.input1{width:60px; padding:0; height:28px; line-height:28px; display:block text-align:center; background:#69f; cursor:pointer;; margin:0 5px 0 10px; border:1px solid #69f; border-radius:3px; color:white; font-weight:600;}	
+		.input1:hover{background:#39f;}	
+	</style>
+   
+</head>
+
+<body>
+ <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- 搜索 -->
+  	<div  style="width:98%;height:50px; line-height:50px; border:1px solid #eee; border-radius:3px;  margin:10px auto; background:#fafafa; margin-left:10px;" >
+               	<form>
+                <table align="center" border="0" cellpadding="0" cellspacing="0" style=" margin:0 auto; font-size:14px">
+                    <tr>
+                        <td>
+                           关键字&nbsp;&nbsp;
+                        </td>
+                        <td>
+                            <input type="text" style="width:200px; height:25px; line-height:25px; border:1px solid #eee;" value=" "/>
+                        </td>
+                       
+                        <td>
+                        	<input type="button" class="input1" value="查询"></input>
+                        </td>
+                        <td>
+							<input type="reset" class="input1" value="清空"></input> 
+                        </td>
+                    </tr>
+                </table>
+   				</form>
+
+    </div>
+    <div  style="padding-top:10px;width:98%; float:right;">
+    	<table id="tongzhi" align="center" style="width:98%;" >
+    		
+    			<tr>
+    				<td>
+    					<div class="news">
+                        		<div class="new_title"><i></i><span class="date">2015-10-15</span><a href="#" onclick="viewFile();">new001内容</a><br/><br/></div>
+                        		<div class="new_content">洛杉矶发电量卡萨丁街坊邻居山东龙口解放路快圣诞节分路口时京东方路口见上帝哇哇..<a></a><br/></div> 
+                        </div>
+    				</td>
+    			</tr>
+    	</table>
+    </div>	
+    <script type="text/javascript" src="jquery-3.3.1/jquery-3.3.1.min.js" ></script>
+    <script>
+    $(function(){
+    $.ajax({
+    	type:"post",
+    	url:"./MeetTongzhiServlet1",
+    	dataType:"json",
+    	success:function(data){
+
+    		var tds=''; 
+    		for(var i=0;i<data.length;i++)
+    		{
+    		var td='<tr>'+
+                    '<td>'+
+                    '<div class="news">'+
+                        '<div class="new_title"><i></i><span class="date">'+"from admin"+'</span>' +
+                        '<a href="javascript:void(0);"  onclick="viewFile();" >'+data[i].meetname+'</a><br/><br/>'+
+                        '</div>'+
+                        '<div class="new_content">'+data[i].meetcontext+'<a></a><br/></div>'+
+                    '</div>'+' </td>'+'</tr>';
+    			tds+=td;
+    		}
+    		$("#tongzhi").html(tds);
+    	}
+    })                        
+    })                         
+    </script>
+    
+<script>
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<link rel="stylesheet" href="./layui/css/layui.css">
+<link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
+<link href='./fullcalendar-5.6.0/lib/main.css' rel='stylesheet' />
+
+<script src='./fullcalendar-5.6.0/lib/main.js'></script>
+<script src='./fullcalendar-5.6.0/examples/js/theme-chooser.js'></script>
+<script src='./fullcalendar-5.6.0/lib/locales/zh-cn.js'></script>
+<script src='./jquery-3.3.1/jquery-3.3.1.min.js'></script>
+<script src="./layui/layui.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar;
+    var date=new Date();
+
+    initThemeChooser({
+
+      init: function(themeSystem) {
+        calendar = new FullCalendar.Calendar(calendarEl, {
+          themeSystem: themeSystem,
+          headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+          },
+          initialDate:date,
+          weekNumbers: true,
+          navLinks: true, // can click day/week names to navigate views
+          editable: true,
+          selectable: true,
+          locale:"zh-cn",
+          nowIndicator: true,
+          dayMaxEvents: true, // allow "more" link when too many events
+          // showNonCurrentDates: false,
+          events:function(info, successCallback, failureCallback){
+          		$.ajax({
+          			type:"post",
+          			url:"./MyMeetServlet",
+          			contentType:"appliction/json;charset=utf-8",
+          			dataType:"json",
+          			success:function(data){
+          				var events=[];
+          				for(var i=0;i<data.length;i++)
+          				{	
+          					events.push({
+          						title:data[i].meetname,
+          						start:data[i].meetstarttime,
+          						end:data[i].meetendtime,
+          						meetcontext:data[i].meetcontext,
+          						meetsqr:data[i].meetsqr,
+          						meetid:data[i].id,
+          						meetlocation:data[i].meetlocation,
+          						meetstatus:data[i].meetstatus,
+          						qdstatus:data[i].qdstatus
+          						
+          			
+          					});
+          					
+          				}
+          				successCallback(events);
+          			},
+          			error:function(data){
+          				alert("错误错误");
+          			}
+          		})
+          },
+          //鼠标悬浮
+         eventMouseEnter:function(info){
+         var qdstatus;
+         if(info.event.extendedProps.qdstatus==0)
+         {
+         	qdstatus="未签到";
+         }else if(info.event.extendedProps.qdstatus==1){
+         	qdstatus="已签到";
+         }else if(info.event.extendedProps.qdstatus==2){
+         	qdstatus="已请假还未审核！";
+         }else if(info.event.extendedProps.qdstatus==20){
+         	qdstatus="请假审核拒绝";
+         }else if(info.event.extendedProps.qdstatus==21){
+         	qdstatus="已批假";
+         }else if(info.event.extendedProps.qdstatus==3){
+         	qdstatus="迟到";
+         }else if(info.event.extendedProps.qdstatus==4){
+         	qdstatus="缺勤";
+         }
+          var meetstatus=info.event.extendedProps.meetstatus;
+  			 if(meetstatus==0)
+  			 {
+  			 	meetstatus="未开始";
+  			 }else if(meetstatus==1)
+  			 {
+  			 meetstatus="进行中";
+  			 }else if(meetstatus==2)
+  			 {
+  			 meetstatus="已结束";
+  			 }
+         
+         
+          var start=info.event.start.getHours()+":"+info.event.start.getMinutes();
+  			 var end=info.event.end.getHours()+":"+info.event.end.getMinutes();
+          			tippy(info.el,{
+          				content:
+                "<div style='color: #ADEAEA'>会议主题："+info.event.title+"</div>"
+                +"<div style='color: #ADEAEA'>会议开始时间："+start+"</div>"
+                +"<div style='color: #ADEAEA'>会议结束时间："+end+"</div>"
+                +"<div style='color: #ADEAEA'>会议发起人："+info.event.extendedProps.meetsqr+"</div>"
+                +"<div style='color: #ADEAEA'>会议地点："+info.event.extendedProps.meetlocation+"</div>"
+                +"<div style='color: #ADEAEA'>签到状态："+qdstatus+"</div>"
+                +"<div style='color: #ADEAEA'>会议状态："+meetstatus+"</div>",
+               
+              theme:'light',
+              // trigger: 'click',
+              interactive: true,
+              placement: 'right-end',
+              allowHTML: true,
+          	});
+         
+         	
+         },
+         //点击时间
+          eventClick: function(info) {
+           openEditLayer(info);
+  }
+        });
+        calendar.render();
+      },
+
+      change: function(themeSystem) {
+        calendar.setOption('themeSystem', themeSystem);
+      }
+
+    });
+
+  });
+  
+  
+  //编辑事件
+  function openEditLayer(info){
+  	layui.use('form', function () {
+      var form = layui.form; 
+  	layer.open({
+  		type:2
+  		,title:'查看详情'
+  		,content:'qingjia.html'
+  		,maxmin:true
+  		,area : [ '700px', '450px' ]
+  		,success:function(layero,index){
+  			 var div = layero.find('iframe').contents().find('#useradmin');
+  			 console.log(div);
+  			 var start=info.event.start.getHours()+":"+info.event.start.getMinutes();
+  			 var end=info.event.end.getHours()+":"+info.event.end.getMinutes();
+  			 div.find("#meetname").val(info.event.title);
+  			 div.find("#meetsqr").val(info.event.extendedProps.meetsqr);
+  			 div.find("#meetid").val(info.event.extendedProps.meetid);
+  			 div.find("#meetstarttime").val(start);
+  			 div.find("#meetendtime").val(end);
+  			 
+  		}
+  	})
+  	
+  	
+  	})
+}
+
+</script>
+
+</head>
+<body>
+
+  <div id='top'>
+
+    <div class='left'>
+
+      <div id='theme-system-selector' class='selector'>
+           <select>
+          <option value='bootstrap'  selected>主题4</option>
+        </select>
+      </div>
+
+      <div data-theme-system="bootstrap" class='selector' style='display:none'>
+        主题：
+
+        <select>
+          <option value='flatly' selected>黑蓝</option>
+        </select>
+      </div>
+
+      <span id='loading' style='display:none'>加载主题</span>
+
+    </div>
+    <div class='right' style='display:none'>
+      <span class='credits' data-credit-id='bootstrap-standard' style='display:none'>
+        <a href='https://getbootstrap.com/docs/3.3/' target='_blank'>Theme by Bootstrap</a>
+      </span>
+      <span class='credits' data-credit-id='bootstrap-custom' style='display:none'>
+        <a href='https://bootswatch.com/' target='_blank'>Theme by Bootswatch</a>
+      </span>
+    </div>
+
+    <div class='clear'></div>
+  </div>
+
+  <div id='calendar'></div>
+
+
+<script src="./js1/tippy-bundle.umd.js"></script>
+<script src="./js1/popper.min.js"></script>
+<script src="./js1/tippy-bundle.umd.min.js"></script>
+</body>
+</html>

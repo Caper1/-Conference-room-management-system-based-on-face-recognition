@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <display-name></display-name>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UserSelectAllServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.UserSelectAllServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+       <servlet-name>UserSelectAllServlet</servlet-name>
+		<url-pattern>/UserSelectAllServlet</url-pattern>
+   
+  </servlet-mapping>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UserTableSelectServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.UserTableSelectServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+       <servlet-name>UserTableSelectServlet</servlet-name>
+		<url-pattern>/UserTableSelectServlet</url-pattern>
+   
+  </servlet-mapping>
+
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UserTableUpdateServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.UserTableUpdateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+       <servlet-name>UserTableUpdateServlet</servlet-name>
+		<url-pattern>/UserTableUpdateServlet</url-pattern>
+   
+  </servlet-mapping>
+
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UserTableDleteServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.UserTableDleteServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UserTableInertSevlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.UserTableInertSevlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>RoomSelectAllServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.RoomSelectAllServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>loginSession</servlet-name>
+    <servlet-class>cn.xxs.servlet.loginSession</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>LoginoutServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.LoginoutServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>userloginSession</servlet-name>
+    <servlet-class>cn.xxs.servlet.userloginSession</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>userLoginoutServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.userLoginoutServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UsernameServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.UsernameServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>MeetAddServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.MeetAddServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>MeetSelectAllServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.MeetSelectAllServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>MeetfindbyNameServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.MeetfindbyNameServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>MeetSelectServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.MeetSelectServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UpdateMeetExamineServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.UpdateMeetExamineServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>MeetSelectServlet1</servlet-name>
+    <servlet-class>cn.xxs.servlet.MeetSelectServlet1</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>TodayMeetServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.TodayMeetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>MeetTongzhiServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.MeetTongzhiServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>MeetDeleteServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.MeetDeleteServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>MeetTongzhiServlet1</servlet-name>
+    <servlet-class>cn.xxs.servlet.MeetTongzhiServlet1</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>MeetTongzhiServlet2</servlet-name>
+    <servlet-class>cn.xxs.servlet.MeetTongzhiServlet2</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>facefindServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.facefindServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>SignServletFace</servlet-name>
+    <servlet-class>cn.cy.controller.SignServletFace</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>DepartSelectServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.DepartSelectServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>MyMeetServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.MyMeetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>MeetChexiaoServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.MeetChexiaoServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>CalendarMeetServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.CalendarMeetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>qingjiaServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.qingjiaServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>qingjiaSelectServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.qingjiaSelectServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>qingjiaupdateServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.qingjiaupdateServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>wanshangerenServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.wanshangerenServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>selectgerenServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.selectgerenServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>WXmymeetServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.WXmymeetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>WXloginServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.WXloginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>userLoginServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.userLoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>WXqingjiaServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.WXqingjiaServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>WXSelectByNameServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.WXSelectByNameServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>WXUpdatePasswordServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.WXUpdatePasswordServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>WXqingjiaSelectServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.WXqingjiaSelectServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>WXqingjiaupdateServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.WXqingjiaupdateServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UserCountMeetServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.UserCountMeetServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UserCountKaoqinServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.UserCountKaoqinServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>MeetRoomCountServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.MeetRoomCountServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>RenyuanKaoqinServlet</servlet-name>
+    <servlet-class>cn.xxs.servlet.RenyuanKaoqinServlet</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>UserTableDleteServlet</servlet-name>
+    <url-pattern>/UserTableDleteServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserTableInertSevlet</servlet-name>
+    <url-pattern>/UserTableInertSevlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RoomSelectAllServlet</servlet-name>
+    <url-pattern>/RoomSelectAllServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>loginSession</servlet-name>
+    <url-pattern>/loginSession</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LoginoutServlet</servlet-name>
+    <url-pattern>/LoginoutServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>userloginSession</servlet-name>
+    <url-pattern>/userloginSession</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>userLoginoutServlet</servlet-name>
+    <url-pattern>/userLoginoutServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UsernameServlet</servlet-name>
+    <url-pattern>/UsernameServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MeetAddServlet</servlet-name>
+    <url-pattern>/MeetAddServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MeetSelectAllServlet</servlet-name>
+    <url-pattern>/MeetSelectAllServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MeetfindbyNameServlet</servlet-name>
+    <url-pattern>/MeetfindbyNameServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MeetSelectServlet</servlet-name>
+    <url-pattern>/MeetSelectServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateMeetExamineServlet</servlet-name>
+    <url-pattern>/UpdateMeetExamineServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MeetSelectServlet1</servlet-name>
+    <url-pattern>/MeetSelectServlet1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TodayMeetServlet</servlet-name>
+    <url-pattern>/TodayMeetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MeetTongzhiServlet</servlet-name>
+    <url-pattern>/MeetTongzhiServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MeetDeleteServlet</servlet-name>
+    <url-pattern>/MeetDeleteServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MeetTongzhiServlet1</servlet-name>
+    <url-pattern>/MeetTongzhiServlet1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MeetTongzhiServlet2</servlet-name>
+    <url-pattern>/MeetTongzhiServlet2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>facefindServlet</servlet-name>
+    <url-pattern>/facefindServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SignServletFace</servlet-name>
+    <url-pattern>/SignServletFace</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DepartSelectServlet</servlet-name>
+    <url-pattern>/DepartSelectServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MyMeetServlet</servlet-name>
+    <url-pattern>/MyMeetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MeetChexiaoServlet</servlet-name>
+    <url-pattern>/MeetChexiaoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CalendarMeetServlet</servlet-name>
+    <url-pattern>/CalendarMeetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>qingjiaServlet</servlet-name>
+    <url-pattern>/qingjiaServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>qingjiaSelectServlet</servlet-name>
+    <url-pattern>/qingjiaSelectServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>qingjiaupdateServlet</servlet-name>
+    <url-pattern>/qingjiaupdateServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>wanshangerenServlet</servlet-name>
+    <url-pattern>/wanshangerenServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>selectgerenServlet</servlet-name>
+    <url-pattern>/selectgerenServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>WXmymeetServlet</servlet-name>
+    <url-pattern>/WXmymeetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>WXloginServlet</servlet-name>
+    <url-pattern>/WXloginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>userLoginServlet</servlet-name>
+    <url-pattern>/userLoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>WXqingjiaServlet</servlet-name>
+    <url-pattern>/WXqingjiaServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>WXSelectByNameServlet</servlet-name>
+    <url-pattern>/WXSelectByNameServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>WXUpdatePasswordServlet</servlet-name>
+    <url-pattern>/WXUpdatePasswordServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>WXqingjiaSelectServlet</servlet-name>
+    <url-pattern>/WXqingjiaSelectServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>WXqingjiaupdateServlet</servlet-name>
+    <url-pattern>/WXqingjiaupdateServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserCountMeetServlet</servlet-name>
+    <url-pattern>/UserCountMeetServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserCountKaoqinServlet</servlet-name>
+    <url-pattern>/UserCountKaoqinServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>MeetRoomCountServlet</servlet-name>
+    <url-pattern>/MeetRoomCountServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RenyuanKaoqinServlet</servlet-name>
+    <url-pattern>/RenyuanKaoqinServlet</url-pattern>
+  </servlet-mapping>	
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
