@@ -13,4 +13,4 @@
 *****
 ## 部分页面展示
 #### 会议信息图
-
+![Image text](https://github.com/Caper1/-Conference-room-management-system-based-on-face-recognition/blob/main/images/%E4%BC%9A%E8%AE%AE%E4%BF%A1%E6%81%AF.png)
