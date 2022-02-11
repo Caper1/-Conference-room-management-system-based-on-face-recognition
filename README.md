@@ -14,3 +14,11 @@
 ## 部分页面展示
 #### 会议信息图
 ![Image text](https://github.com/Caper1/-Conference-room-management-system-based-on-face-recognition/blob/main/images/%E4%BC%9A%E8%AE%AE%E4%BF%A1%E6%81%AF.png)
+#### 会议日程图
+![Image text](https://github.com/Caper1/-Conference-room-management-system-based-on-face-recognition/blob/main/images/%E4%BC%9A%E8%AE%AE%E6%97%A5%E7%A8%8B.png)
+#### 会议统计图
+![Image text](https://github.com/Caper1/-Conference-room-management-system-based-on-face-recognition/blob/main/images/%E4%BC%9A%E8%AE%AE%E7%BB%9F%E8%AE%A1.png)
+#### 人脸签到
+![Image text](https://github.com/Caper1/-Conference-room-management-system-based-on-face-recognition/blob/main/images/%E4%BA%BA%E8%84%B8%E7%AD%BE%E5%88%B0.png)
+#### 微信小程序
+![Image text](https://github.com/Caper1/-Conference-room-management-system-based-on-face-recognition/blob/main/images/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F.png)
